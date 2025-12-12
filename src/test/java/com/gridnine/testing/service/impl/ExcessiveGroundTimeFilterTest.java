@@ -69,9 +69,9 @@ class ExcessiveGroundTimeFilterTest {
         assertTrue(filter.shouldExclude(flight));
     }
 
-    @DisplayName(value = "Should return false or true, when test with real flight builder.")
+    @DisplayName(value = "Should return false and true, when test with real flight builder.")
     @Test
-    void shouldReturnFalseOrTrueWhenTestWithRealFlightBuilder() {
+    void shouldReturnFalseAndTrueWhenTestWithRealFlightBuilder() {
         List<Flight> flights = FlightBuilder.createFlights();
         ExcessiveGroundTimeFilter filter = new ExcessiveGroundTimeFilter();
 
