@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    id("application")
 }
 
 group = "com.code"
@@ -7,6 +7,10 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClass.set("com.gridnine.testing.Main")
 }
 
 dependencies {
