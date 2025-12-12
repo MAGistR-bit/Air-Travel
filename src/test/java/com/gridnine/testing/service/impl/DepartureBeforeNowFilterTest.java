@@ -9,7 +9,8 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class DepartureBeforeNowFilterTest {
 
@@ -56,5 +57,4 @@ class DepartureBeforeNowFilterTest {
         assertFalse(filter.shouldExclude(flights.get(0)));
         assertFalse(filter.shouldExclude(flights.get(1)));
     }
-
 }
