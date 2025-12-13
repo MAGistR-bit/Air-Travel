@@ -75,4 +75,25 @@ class ArrivalBeforeDepartureFilterTest {
         assertFalse(filter.shouldExclude(flights.get(0)));
         assertFalse(filter.shouldExclude(flights.get(1)));
     }
+
+    @DisplayName(value = "Should exclude flight with multiple segments, "
+            + "when one segment has arrival before departure.")
+    @Test
+    void shouldExcludeFlightWithMultipleSegmentsWhenOneIsInvalid() {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime departure1 = now.plusHours(1);
+        LocalDateTime arrival1 = now.plusHours(3);
+
+        // Прилет раньше вылета
+        LocalDateTime departure2 = now.plusHours(5);
+        LocalDateTime arrival2 = now.plusHours(4);
+
+        Flight flightWithInvalidSegment = new Flight(List.of(
+                new Segment(departure1, arrival1),
+                new Segment(departure2, arrival2)
+        ));
+
+        ArrivalBeforeDepartureFilter filter = new ArrivalBeforeDepartureFilter();
+        assertTrue(filter.shouldExclude(flightWithInvalidSegment));
+    }
 }
